@@ -1,4 +1,5 @@
 # AI Microservices Stack 🚀
+![image](https://github.com/user-attachments/assets/4c524f89-d8eb-4011-8b0a-fa1ca8c8bf06)
 
 ![Docker](https://img.shields.io/badge/Docker-Containers-blue)
 ![Flask](https://img.shields.io/badge/Flask-API-green)
