@@ -1,0 +1,5 @@
+✅ Service Status
+Service	Endpoint	Response
+Flask-STT	http://localhost:5000	{"service":"FLASK-STT","status":"ready"}
+Kokoro-TTS	http://localhost:8000	{"service":"KOKORO-TTS","status":"ready"}
+Whisper-STT	http://localhost:6001	{"service":"WHISPER-STT","status":"ready"}

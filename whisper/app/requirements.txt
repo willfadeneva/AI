@@ -1,0 +1,7 @@
+flask==2.0.3
+werkzeug==2.0.3
+openai-whisper==20231106
+torch==2.0.1
+ffmpeg-python==0.2.0
+numpy==1.23.5
+tqdm==4.64.1

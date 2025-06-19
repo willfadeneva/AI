@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5678:5678"
+    volumes:
+      - ./n8n-data:/home/node/.n8n
+    environment:
+      - N8N_RUNNERS_ENABLED=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=admin
+
+  flask-stt:
+    build: ./flask-stt
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./flask-stt/app:/app
+
+  whisper-stt:
+    build: ./whisper
+    ports:
+      - "6001:5000"
+    volumes:
+      - ./whisper/app:/app
+    environment:
+      - FLASK_ENV=production
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  kokoro-tts:
+    build: ./kokoro-tts
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./kokoro-tts/app:/app
