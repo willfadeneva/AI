@@ -138,3 +138,36 @@ docker-compose logs -f n8n	View n8n logs
 docker-compose restart whisper	Restart Whisper service
 docker stats	Monitor resource usage
 
+# AI Service Containers
+
+This project runs multiple AI services in Docker containers. Below is the breakdown of each service and how to interact with them.
+
+## Container Services
+
+### 1. Kokoro TTS (Text-to-Speech) Service
+- **Container Name:** `ai_kokoro-tts_1`
+- **Access:** [http://localhost:8000](http://localhost:8000)
+- **Technology:** Uvicorn (ASGI server for Python, likely FastAPI)
+- **Health Check:**
+  ```bash
+  curl -I http://localhost:8000
+
+2. Flask STT (Speech-to-Text) Service
+Container Name: ai_flask-stt_1
+Access: http://localhost:5000
+Technology: Flask (Python web server)
+Health Check:
+curl -I http://localhost:5000
+
+3. n8n Workflow Automation
+Container Name: ai_n8n_1
+Access: http://localhost:5678
+Note: Bound to 127.0.0.1 (only accessible from local machine)
+Default Credentials:
+Email: admin@example.com
+Password: password
+
+4. 4. Whisper STT (Speech-to-Text) Service
+Container Name: ai_whisper-stt_1
+Access: http://localhost:6001 (maps to internal port 5000)
+Health Check:curl -I http://localhost:6001
